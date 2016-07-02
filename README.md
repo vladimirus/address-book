@@ -18,8 +18,8 @@ Quick Start
 
 `mvn clean compile exec:java`
 
-Prerequisites
-=============
+Result
+======
 
 ...Number of males: 3
 ...Oldest person: Wes Jackson
