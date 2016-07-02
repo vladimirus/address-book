@@ -11,7 +11,7 @@ public class Contact {
     private final Gender gender;
     private final LocalDate dateOfBirth;
 
-    public Contact(String firstName, String surname, Gender gender, LocalDate dateOfBirth) {
+    private Contact(String firstName, String surname, Gender gender, LocalDate dateOfBirth) {
         this.firstName = firstName;
         this.surname = surname;
         this.gender = gender;
