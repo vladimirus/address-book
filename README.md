@@ -21,7 +21,7 @@ Quick Start
 Result
 ======
 
-Number of males: 3<br />
-Oldest person: Wes Jackson<br />
-How many days older is Bill than Paul: 2862<br />
+1. Number of males: 3
+2. Oldest person: Wes Jackson
+3. How many days older is Bill than Paul: 2862
 

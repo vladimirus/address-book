@@ -46,8 +46,8 @@ public class AppTest {
         // then
         Iterator<String> it = actual.iterator();
         assertThat(actual, hasSize(3));
-        assertThat(it.next(), is("Number of males: 99"));
-        assertThat(it.next(), is("Oldest person: Emma Morano"));
-        assertThat(it.next(), is("How many days older is Bill than Paul: 10"));
+        assertThat(it.next(), is("1. Number of males: 99"));
+        assertThat(it.next(), is("2. Oldest person: Emma Morano"));
+        assertThat(it.next(), is("3. How many days older is Bill than Paul: 10"));
     }
 }
