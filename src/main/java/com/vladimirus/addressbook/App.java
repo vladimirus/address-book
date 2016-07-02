@@ -15,7 +15,7 @@ public class App {
         new AddressBookFactory().from(new LocalFileReader("AddressBook"))
                 .map(addressBook -> new App().stats(addressBook))
                 .orElseGet(() -> singletonList("Address book is not found"))
-        .forEach(System.out::println);
+                .forEach(System.out::println);
     }
 
     public Collection<String> stats(AddressBook addressBook) {

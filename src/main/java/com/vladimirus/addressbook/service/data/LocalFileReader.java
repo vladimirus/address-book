@@ -2,20 +2,11 @@ package com.vladimirus.addressbook.service.data;
 
 import com.vladimirus.addressbook.model.AddressBook;
 import com.vladimirus.addressbook.model.Contact;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVRecord;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import static java.util.Collections.emptyList;
 import static java.util.Optional.ofNullable;
@@ -42,7 +33,11 @@ public class LocalFileReader implements DataProvider {
         try {
             in = new FileReader(getFile(filename));
             return stream(DEFAULT.parse(in).spliterator(), false)
-                    .map(record -> new Contact())
+                    .map(record -> Contact.builder()
+                            .withName(record.get(0).trim())
+                            .withGender(record.get(1).trim())
+                            .withDateOfBirth(record.get(2).trim())
+                            .build())
                     .collect(toList());
         } catch (Exception e) {
             e.printStackTrace();
