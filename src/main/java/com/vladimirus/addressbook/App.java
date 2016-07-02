@@ -2,7 +2,7 @@ package com.vladimirus.addressbook;
 
 import com.vladimirus.addressbook.model.AddressBook;
 import com.vladimirus.addressbook.service.AddressBookFactory;
-import com.vladimirus.addressbook.service.data.FileReader;
+import com.vladimirus.addressbook.service.data.LocalFileReader;
 
 import java.util.Collection;
 
@@ -12,7 +12,7 @@ import static java.util.Collections.singletonList;
 
 public class App {
     public static void main(String[] args) {
-        new AddressBookFactory().from(new FileReader("AddressBook"))
+        new AddressBookFactory().from(new LocalFileReader("AddressBook"))
                 .map(addressBook -> new App().stats(addressBook))
                 .orElseGet(() -> singletonList("Address book is not found"))
         .forEach(System.out::println);
