@@ -1,17 +1,21 @@
 package com.vladimirus.addressbook;
 
 import com.vladimirus.addressbook.model.AddressBook;
+import com.vladimirus.addressbook.model.Gender;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.BDDMockito;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Collection;
 
+import static com.vladimirus.addressbook.model.Gender.Male;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.core.Is.is;
+import static org.mockito.BDDMockito.given;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AppTest {
@@ -26,11 +30,14 @@ public class AppTest {
 
     @Test
     public void shouldProduceStats() {
+        // given
+        given(addressBook.countByGender(Male)).willReturn(99L);
+
         // when
         Collection<String> actual = app.stats(addressBook);
 
         // then
         assertThat(actual, hasSize(1));
-        assertThat(actual.iterator().next(), is("Number of males: 0"));
+        assertThat(actual.iterator().next(), is("Number of males: 99"));
     }
 }

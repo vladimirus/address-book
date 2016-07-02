@@ -16,5 +16,5 @@ Prerequisites
 Quick Start
 ===========
 
-`mvn exec:java`
+`mvn clean compile exec:java`
 
