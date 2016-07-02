@@ -1,12 +1,9 @@
 package com.vladimirus.addressbook;
 
 import com.vladimirus.addressbook.model.AddressBook;
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.BDDMockito;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
