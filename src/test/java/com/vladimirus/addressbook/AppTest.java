@@ -1,8 +1,14 @@
 package com.vladimirus.addressbook;
 
+import com.vladimirus.addressbook.model.AddressBook;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.BDDMockito;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Collection;
 
@@ -10,25 +16,21 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.core.Is.is;
 
+@RunWith(MockitoJUnitRunner.class)
 public class AppTest {
+    private App app;
+    @Mock
+    private AddressBook addressBook;
 
-    @Test
-    public void shouldStart() {
-
-        // when
-        App app = new App();
-
-        // then
-        // starts without exceptions
+    @Before
+    public void setup() {
+        app = new App();
     }
 
     @Test
     public void shouldProduceStats() {
-        // given
-        App app = new App();
-
         // when
-        Collection<String> actual = app.stats();
+        Collection<String> actual = app.stats(addressBook);
 
         // then
         assertThat(actual, hasSize(1));
