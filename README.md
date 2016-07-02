@@ -18,3 +18,10 @@ Quick Start
 
 `mvn clean compile exec:java`
 
+Prerequisites
+=============
+
+Number of males: 3
+Oldest person: Wes Jackson
+How many days older is Bill than Paul: 2862
+

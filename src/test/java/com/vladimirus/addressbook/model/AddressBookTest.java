@@ -1,13 +1,11 @@
 package com.vladimirus.addressbook.model;
 
 
-import com.vladimirus.addressbook.service.AddressBookFactory;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Optional;
 
 import static com.vladimirus.addressbook.model.Gender.Female;
@@ -74,4 +72,51 @@ public class AddressBookTest {
         assertThat(actual.isPresent(), is(false));
     }
 
+    @Test
+    public void shouldFindByFirstName() {
+        // when
+        Optional<Contact> actual = addressBook.findByFirstName("Tony");
+
+        // then
+        assertThat(actual.isPresent(), is(true));
+        assertThat(actual.get().getName(), is("Tony Blair"));
+    }
+
+    @Test
+    public void shouldNotFindByFirstName() {
+        // when
+        Optional<Contact> actual = addressBook.findByFirstName("Boris");
+
+        // then
+        assertThat(actual.isPresent(), is(false));
+    }
+
+    @Test
+    public void shouldGetAgeDifference() {
+        // when
+        Optional<Long> actual = addressBook.ageDifference("Tony", "Samantha");
+
+        // then
+        assertThat(actual.isPresent(), is(true));
+        assertThat(actual.get(), is(6556L));
+    }
+
+    @Test
+    public void shouldGetAgeDifferenceInReverse() {
+        // when
+        Optional<Long> actual = addressBook.ageDifference("Samantha", "Tony");
+
+        // then
+        assertThat(actual.isPresent(), is(true));
+        assertThat(actual.get(), is(-6556L));
+    }
+
+    @Test
+    public void shouldNotGetAgeDifferenceInReverse() {
+        // when
+        Optional<Long> actual = addressBook.ageDifference("Tony", "Boris");
+
+        // then
+        assertThat(actual.isPresent(), is(false));
+    }
 }

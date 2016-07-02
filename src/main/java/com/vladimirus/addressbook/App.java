@@ -2,7 +2,6 @@ package com.vladimirus.addressbook;
 
 import com.vladimirus.addressbook.model.AddressBook;
 import com.vladimirus.addressbook.model.Contact;
-import com.vladimirus.addressbook.model.Gender;
 import com.vladimirus.addressbook.service.AddressBookFactory;
 import com.vladimirus.addressbook.service.data.LocalFileReader;
 
@@ -24,7 +23,8 @@ public class App {
     public Collection<String> stats(AddressBook addressBook) {
         return asList(
                 format("Number of males: %d", addressBook.countByGender(Male)),
-                format("Oldest person: %s", addressBook.oldest().map(Contact::getName).orElse("<no data>"))
+                format("Oldest person: %s", addressBook.oldest().map(Contact::getName).orElse("<no data>")),
+                format("How many days older is Bill than Paul: %s", addressBook.ageDifference("Bill", "Paul").map(i -> i.toString()).orElse("<no data>"))
         );
     }
 }
