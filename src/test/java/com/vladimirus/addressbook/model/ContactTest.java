@@ -33,6 +33,7 @@ public class ContactTest {
         // then
         assertThat(actual.getFirstName(), is("David"));
         assertThat(actual.getSurname(), is("Cameron"));
+        assertThat(actual.getName(), is("David Cameron"));
         assertThat(actual.getGender(), is(Male));
         assertThat(actual.getDateOfBirth(), is(LocalDate.of(1966, 10, 9)));
     }

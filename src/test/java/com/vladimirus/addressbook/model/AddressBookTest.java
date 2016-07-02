@@ -7,9 +7,12 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Optional;
 
 import static com.vladimirus.addressbook.model.Gender.Female;
 import static com.vladimirus.addressbook.model.Gender.Male;
+import static java.util.Collections.emptyList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -46,4 +49,29 @@ public class AddressBookTest {
         // then
         assertThat(actual, is(1L));
     }
+
+
+    @Test
+    public void shouldGetOldest() {
+
+        // when
+        Optional<Contact> actual = addressBook.oldest();
+
+        // then
+        assertThat(actual.isPresent(), is(true));
+        assertThat(actual.get().getName(), is("Michael Howard"));
+    }
+
+    @Test
+    public void shouldNotGetOldest() {
+        // given
+        AddressBook addressBook = new AddressBook(emptyList());
+
+        // when
+        Optional<Contact> actual = addressBook.oldest();
+
+        // then
+        assertThat(actual.isPresent(), is(false));
+    }
+
 }

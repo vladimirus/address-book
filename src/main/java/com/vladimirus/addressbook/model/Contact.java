@@ -30,6 +30,10 @@ public class Contact {
         return surname;
     }
 
+    public String getName() {
+        return firstName + " " + surname;
+    }
+
     public Gender getGender() {
         return gender;
     }

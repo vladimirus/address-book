@@ -1,6 +1,7 @@
 package com.vladimirus.addressbook;
 
 import com.vladimirus.addressbook.model.AddressBook;
+import com.vladimirus.addressbook.model.Contact;
 import com.vladimirus.addressbook.model.Gender;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,6 +11,8 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.Optional;
 
 import static com.vladimirus.addressbook.model.Gender.Male;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -22,6 +25,8 @@ public class AppTest {
     private App app;
     @Mock
     private AddressBook addressBook;
+    @Mock
+    private Contact contact;
 
     @Before
     public void setup() {
@@ -32,12 +37,16 @@ public class AppTest {
     public void shouldProduceStats() {
         // given
         given(addressBook.countByGender(Male)).willReturn(99L);
+        given(addressBook.oldest()).willReturn(Optional.of(contact));
+        given(contact.getName()).willReturn("Emma Morano");
 
         // when
         Collection<String> actual = app.stats(addressBook);
 
         // then
-        assertThat(actual, hasSize(1));
-        assertThat(actual.iterator().next(), is("Number of males: 99"));
+        Iterator<String> it = actual.iterator();
+        assertThat(actual, hasSize(2));
+        assertThat(it.next(), is("Number of males: 99"));
+        assertThat(it.next(), is("Oldest person: Emma Morano"));
     }
 }
