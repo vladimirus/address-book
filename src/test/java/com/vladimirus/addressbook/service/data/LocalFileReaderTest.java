@@ -28,7 +28,7 @@ public class LocalFileReaderTest {
     @Test
     public void shouldGetAddressBook() {
         // given
-        LocalFileReader localFileReader = new LocalFileReader("src\\test\\resources\\AddressBook");
+        LocalFileReader localFileReader = new LocalFileReader("src/test/resources/AddressBook");
 
         // when
         Optional<AddressBook> actual = localFileReader.addressBook();
@@ -40,7 +40,7 @@ public class LocalFileReaderTest {
     @Test
     public void shouldGetContacts() {
         // given
-        LocalFileReader localFileReader = new LocalFileReader("src\\test\\resources\\AddressBook");
+        LocalFileReader localFileReader = new LocalFileReader("src/test/resources/AddressBook");
 
         // when
         Collection<Contact> actual = localFileReader.contacts();

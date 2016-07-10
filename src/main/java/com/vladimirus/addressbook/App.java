@@ -14,7 +14,7 @@ import static java.util.Collections.singletonList;
 
 public class App {
     public static void main(String[] args) {
-        new AddressBookFactory().from(new LocalFileReader("src\\main\\resources\\AddressBook"))
+        new AddressBookFactory().from(new LocalFileReader("src/main/resources/AddressBook"))
                 .map(addressBook -> new App().stats(addressBook))
                 .orElseGet(() -> singletonList("Address book is not found"))
                 .forEach(System.out::println);
